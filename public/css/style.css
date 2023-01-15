@@ -21,6 +21,11 @@ header {
  color: #4c79d3;
 }
 
+.icon-detail {
+    font-size: 50px;
+    margin-right: 10px;
+    vertical-align: middle;;
+}
 
 .text-login {
     color: white;
@@ -43,7 +48,38 @@ header {
     margin: 0 25%;
 }
 
-.button-login:hover {
+.button-default{
+    border-radius: 10px;
+    background-color: #4e0070;
+    color: white;
+}
+
+.button-cancel{
+    border-radius: 10px;
+}
+
+.button-float {
+    border-radius: 100%;
+    height: 60px;
+    width: 60px;
+    position: fixed;
+    padding: 0 !important;
+    bottom: 1rem;
+    right: 2rem;
+    font-size: 35px;
+    border: 2px solid #4e0070;
+    background-color: #4e0070;
+    color: white;
+    
+}
+
+.button-float:hover {
+    border: 2px solid #4c79d3;
+    background: #ffffff;
+    color: #4c79d3;
+}
+
+.button-login:hover, .button-default:hover {
     background: #4c79d3;
     color: #ffffff;
 }
@@ -59,4 +95,10 @@ header {
 
 .form-text{
     font-size: 12px;
+}
+
+.info {
+    background: white;
+    border-radius: 20px 20px 0px 0px;
+    padding: 20px 0px 0px;
 }
