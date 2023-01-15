@@ -1,0 +1,8 @@
+.background-image {
+   background: url(./images/city.jpg) repeat-x center bottom; 
+   background-size: contain;
+}
+
+img {
+   border-radius: 250px; 
+}
