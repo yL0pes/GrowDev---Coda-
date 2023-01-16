@@ -66,7 +66,7 @@ document.getElementById("create-form").addEventListener("submit", function(e){
 
 function checkLogged() {
     if(session){
-        sessionStorage.setItem('logged', session);
+        sessionStorage.setItem("logged", session);
         logged = session;
     }
 
