@@ -5,22 +5,23 @@ let data = {
     transactions: []
 };
 
-//mesmo código, só n vai revisei mil vezes
 
 document.getElementById("button-logout").addEventListener("click", logout);
+
+
 //ADD LANCAMENTO
-document.getElementById("transaction-form").addEventListener("submit", function(e) {
+document.getElementById("transaction-form").addEventListener("submit", function(e){
     e.preventDefault();
-    
+
     const value = parseFloat(document.getElementById("value-input").value);
     const description = document.getElementById("description-input").value;
     const date = document.getElementById("date-input").value;
     const type = document.querySelector('input[name="type-input"]:checked').value;
-    
+
     data.transactions.unshift({
-        value: value, 
-        type: type, 
-        description: description, 
+        value: value,
+        type: type,
+        description: description,
         date: date
     });
 
@@ -28,10 +29,9 @@ document.getElementById("transaction-form").addEventListener("submit", function(
     e.target.reset();
     myModal.hide();
 
+    getTransactions();
 
-    //getTransactions();
-
-    alert("Lançado com Sucesso!");
+    alert("Lançamento adicionado com sucesso!");
 
 });
 
@@ -43,20 +43,21 @@ function checkLogged() {
         logged = session;
     }
     
-    if(!logged){
+    if(!logged){ 
         window.location.href = "index.html";
         return;
     }
-    
+
     const dataUser = localStorage.getItem(logged);
     if (dataUser) {
         data = JSON.parse(dataUser);
     }
-    
+
     getTransactions();
 
-
 }
+
+
 
 function logout() {
     sessionStorage.removeItem("logged");
@@ -66,31 +67,33 @@ function logout() {
 }
 
 function getTransactions(){
-     const transactions = data.transactions;
-     let transactionsHtml = ``;
+    const transactions = data.transactions;
+    let transactionsHtml = ``;
 
-     if(transactions.lenght) {
-        transacitons.forEach(item => {
+    if(transactions.length){
+        transactions.forEach((item) => {
             let type = "Entrada";
-           
+
             if(item.type === "2"){
                 type = "Saída";
             }
+
             transactionsHtml += `
-              <tr>
-                <th scope="row">${item.date}</th>
-                <td>${item.value.toFixed(2)}</td>
-                <td>${type}</td>
-                <td>${item.description}</td>
-              </tr>
+                <tr>
+                    <th scope="row">${item.date}</th>
+                    <td>${item.value.toFixed(2)}</td>
+                    <td>${type}</td>
+                    <td>${item.description}</td>
+                </tr>
+
             `
         })
-     }
-     document.getElementById("transactions-list").innerHTML = transactionsHtml;
-     
+    }
+
+    document.getElementById("transactions-list").innerHTML = transactionsHtml;
+
 }
 
-
 function saveData(data) {
-    localStorage.setItem(data.login, JSON.stringify(data));
+    localStorage.setItem(data.email, JSON.stringify(data));
 }
